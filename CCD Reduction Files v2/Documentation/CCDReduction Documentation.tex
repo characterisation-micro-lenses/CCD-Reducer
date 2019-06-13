@@ -1,0 +1,227 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{paralist}
+\usepackage{verbatim}
+\usepackage[font=it, labelfont={normalfont,bf}]{caption}
+\usepackage[font=it, labelfont={normalfont,bf}]{subcaption}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[dutch,english]{babel}
+%\selectlanguage{dutch}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{mathrsfs}
+\usepackage[nointegrals]{wasysym}
+\usepackage{pgfplots}
+\usepackage{pict2e} %fixes \oiint
+\usepackage{soul}
+\usepackage{titling}
+\usepackage{multicol}
+\usepackage{makecell}
+\pgfplotsset{compat=1.14}
+\usepackage{cancel}
+\usepackage{textgreek} %defines upright greek characters (fixes chemmacros)
+\usepackage{chemmacros} %\ch
+\usepackage{chemfig} %\chemfig{O=C=O}
+\setchemfig{bond join=true, atom sep = 25pt} %specifications for chemfig, can be changed internally.
+\usepackage{slashed} %\slashed
+\usepackage{changepage}
+\usepackage{verbatim} %\begin{verbatim}raw code\end{verbatim}
+\changepage{90 pt}{80 pt}{-40 pt}{-40 pt}{}{-20 pt}{}{-10 pt}{15 pt}
+%\changepage{textheight}{textwidth}{evensidemargin}{oddsidemargin}{columnsep}{topmargin}{headheight}{headsep}{footskip}
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\pagestyle{fancy}
+\usepackage[bottom]{footmisc}
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+\newcommand{\dau}[3][]{\frac{\partial^{#1}{#2}}{\partial{#3}}}
+\usepackage{listings} %\lstinputlisting{mycode.py}
+
+\let\varsun\sun
+\let\varearth\earth
+\renewcommand{\sun}{\ensuremath{\odot}} %\sun = astronomical symbol for the sun
+\renewcommand{\earth}{\ensuremath{\oplus}} %\earth = astronomical symbol for the earth
+\newcommand{\moon}{\ensuremath{\leftmoon\mkern-2mu}} %\moon = astronomical symbol for the moon
+\newcommand{\bra}[1]{\left\langle #1\right|} %\bra{x} = <x|
+\newcommand{\ket}[1]{\left| #1\right\rangle} %\ket{x} = |x>
+\newcommand{\braket}[3][]{\if\relax\detokenize{#1}\relax \left\langle\vphantom{#3}#2\right|\left.\kern-0.5ex\vphantom{#2}#3\right\rangle \else \left\langle\vphantom{#1 #3}#2\right|#1\left|\vphantom{#1 #2}#3\right\rangle\fi} %\braket[A]{x}{y} creates <x|A|y>
+\newcommand{\av}[1]{\left\langle#1\right\rangle} %\av{x} = <x>
+\newcommand{\ten}[1]{\overleftrightarrow{#1}} %\ten{x} = double arrow on x
+\newcommand{\bvec}[1]{\boldsymbol{#1}} %\bvec{x} = bold x
+\newcommand{\bhat}[1]{\boldsymbol{\hat{#1}}} %\bhat{x} = bold x with hat
+\newcommand{\bten}[1]{\boldsymbol{\overleftrightarrow{#1}}} %\bten = bold tensor x
+\newcommand{\dbar}{{d\mkern-7mu\mathchar'26\mkern-2mu}}  %\dbar = d with a bar through it (like hbar)
+
+\DeclareMathOperator{\arcsec}{arcsec} %Declares the rest of the trigonometric functions
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsot}{arccot}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+\DeclareMathOperator{\arcoth}{arccoth}
+
+\newenvironment{multcell}[1]{\begin{tabular}{@{}#1@{}}}{\end{tabular}} %\multcel{x} creates a cell that allows breaklines
+
+\let\variint\iint %\creation of \iint, \iiint and \oiint
+\let\variiint\iiint
+\renewcommand{\iint}{\int\mathchoice{\mkern-15mu}{\mkern-10mu}{\mkern-9mu}{\mkern-9mu}\int}
+\newcommand{\oiint}{\mathchoice{\mkern11mu\raisebox{3pt}{\text{\circle{9}}}\mkern-15mu}{\mkern9mu\raisebox{3pt}{\text{\circle{7}}}\mkern-11.5mu}{\mkern11mu\raisebox{2pt}{\text{\circle{5}}}\mkern-12mu}{\mkern11mu\raisebox{1.75pt}{\text{\circle{3.5}}}\mkern-10.65mu}\iint}
+\renewcommand{\iiint}{\iint\mathchoice{\mkern-15mu}{\mkern-10mu}{\mkern-9mu}{\mkern-9mu}\int}
+\let\temp\phi %redefining alternate naming
+\let\phi\varphi
+\let\varphi\temp
+\let\temp\epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\temp
+\let\temp\undefined %deleting temporal variable
+
+\definecolor{codegreen}{HTML}{11A642} %\defines colors for \listing
+\definecolor{codered}{HTML}{C80000}
+\definecolor{codeblue}{HTML}{0000FF}
+\definecolor{codepurple}{HTML}{900090}
+\definecolor{codebrown}{HTML}{924900}
+\lstset{language=Python, showstringspaces=false, basicstyle=\small, numbers=left, numberstyle=\tiny, numberfirstline=false, breaklines=true, stepnumber=1, tabsize=4, commentstyle=\ttfamily\color{gray}, identifierstyle=\ttfamily\textbf, stringstyle=\itshape\color{codegreen}, inputpath=Python/, keywordstyle=\color{codeblue}, morekeywords={as}, keywordstyle=\color{codeblue}}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, linktoc=all, breaklinks=true}
+\urlstyle{same}
+\graphicspath{ {./Pictures/}{./Images/}{./} }
+\setcounter{page}{0}
+\newcommand\addtag{\refstepcounter{equation}\tag{\theequation}}
+\pretitle{\centering \huge}
+\title{CCDReduction Documentation\\} %Title
+\posttitle{\vspace{15mm}}
+\preauthor{\centering \large }
+\author{Jurriaan de Gier - s1619179\\} %Author
+\postauthor{\vspace{5mm}}
+\predate{\centering \large }
+\date{\today\\}
+\postdate{\vspace{30mm}}%hier kan een plaatje in
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\titlepage
+%\tableofcontents
+\clearpage
+\section{Introduction}
+CCDReduction is a package (in this case a set of python files) that can be imported and used to open and reduce images taken using a CCD camera. Within multiple fields of science, data is recorded using CCD cameras which then are reduced to the so called science image.
+
+
+\section{Dependencies}
+The classes have the following dependencies:
+\begin{description}
+\item [numpy] numpy is used for computations with numpy arrays and is essential to the package.
+\item [matplotlib] matplotlib is used to create figures and is essential to the package.
+\item [os] os is used to find the files at a path and is essential to the package.
+\item [scipy] scipy is used for odd functions such as the bessel functions and the optimize package. It is not essential is depended on in the Laser Reduction files (such as \ul{Focus} and \ul{LaserReducer})
+\item [astropy] astropy is used to load Fits files and is not essential to the inner workings of this class (only \ul{FitsLoader} depends on it). This is done by design.
+\item [emcee] emcee is used for an mcmc optimalization procedure in the FocusFitter classes and is not essential.
+\item [corner] corner is used to visualize the mcmc optimalization and is not essential.
+\end{description}
+
+
+\section{Overview}
+The CCDReduction package is split in 3 parts: The Core files, the CCD classes, and the Fits classes. An important not is that the CCD classes contain all of the important functions and variables, but cannot be executed by themselves. the Fits classes are subclasses of the CCD classes and enable the opening of Fits files (used a lot in astronomy and related sciences). For more information see the Fits classes.
+
+\subsection{Core files}
+\subsubsection{Data}
+The \ul{Data} file contains a class which creates the \ul{Data} object which has the following calling signature:
+\[\texttt{dataobject = Data(\textit{data}, \textit{time}, \textit{identifiers})}\]
+with \texttt{\textit{data}} a list containing $N$ numpy arrays, \texttt{\textit{time}} a list containing $N$ integers or floats and \texttt{\textit{identifiers}} a list containing $N$ items (such as strings, numbers, headers from Fits files, etc). The data object takes 3 lists like\footnote{lists, tuples and numpy arrays work} objects, which must have the same lengths. The \ul{Data} object has the following properties:
+\begin{description}
+\item [data] A function which returns the data list: \texttt{Data.data()}
+\item [time] A function which returns the time list: \texttt{Data.time()}
+\item [identifiers] A function which returns the identifiers list: \texttt{Data.identifiers()}
+\item [shape] A list that contains the shapes of all data arrays: \texttt{Data.shape}
+\item [medians] A function which returns an array containing the median value of every data array: \texttt{Data.medians()}
+\item [maximums] Same as medians but with the maximum values: \texttt{Data.maximums()}
+\item [minimums] Same as medians but with the minimum values: \texttt{Data.minimums()}
+\end{description}
+it also contains a number of \say{magic} methods such as \texttt{len(Data)} returns $N$.
+
+\subsubsection{ErrorGenerator}
+\ul{ErrorGenerator} is an abstract class which empty subclasses can derive from to create a Error class. 
+
+\subsubsection{support\_functions}
+The support\_functions python file contains a number of functions that are used throughout the classes. An important note is that the functions contained in this class must always work the same way, and such are mostly mathematical formulas. The following 
+
+
+\subsection{CCD classes}
+\subsubsection{CCDReductionObject}
+The \ul{CCDReductionObject} file contains the abstract \ul{CCDReductionObject} class and its \ul{CCDBias}, \ul{CCDDark} and \ul{CCDFlat} subclasses. The classes have the following calling signature:
+\[\texttt{bias = CCDBias(\textit{masterpath}, \textit{filespath}=None)}\]
+The \texttt{\textit{masterpath}} is the path to the location where the \say{master} pcl file is/will be stored, \texttt{\textit{filespath}} is the path to where the files containing the corresponding CCD images of the class are located (for example for the \ul{CCDBias} class \texttt{\textit{filespath}} is the folder where all the bias images are located, the \texttt{master\_bias} function then combines all of the bias images into a single \say{master} bias which can then be used to reduce the CCD images you want to analyze). If \texttt{\textit{filespath}} is not given it is taken to be the same as \texttt{\textit{masterpath}}. Both paths must obviously be strings.
+
+The objects created from the \ul{CCDBias}, \ul{CCDDark}, and \ul{CCDFlat} classes can creat and load the bias, dark and flat pcl files. These files contain Data objects used to reduce the CCD images to the science image in \ul{CCDReducer}.\\
+All 3 subclasses have the following functions (here indicated for the \ul{CCDBias} subclass):
+\begin{description}
+\item [load] A function that loads the corresponding pcl master file: \texttt{bias.load()}
+\item [create] A function that creates the corresponding pcl master file: \texttt{bias.create()}
+\end{description}
+The way that the master file is created differs between the subclasses: \ul{CCDBias} opens all files at the \texttt{\textit{filespath}} and combines these into a single pcl file; \ul{CCDDark} opens all files AND the \say{master} bias pcl file at the \texttt{\textit{masterpath}} to create a single pcl file; and \ul{CCDFlat} opens all filesAND the \say{master} bias and dark pcl files to create a single pcl file.
+
+So each class can create a master file and load it.
+
+\subsubsection{CCDReducer}
+The \ul{CCDReducer} class loads a single file and optionally reduces with the created master files from the ReductionObjects. Its calling signature is:
+\[\texttt{f = CCDReducer(\textit{filepath}, \textit{masterpath}=None, \textit{savepath}=None)}\]
+\texttt{\textit{filepath}} is the full path to the file to be reduced. \texttt{\textit{masterpath}} is the path to the location of the master files and \texttt{\textit{savepath}} is the path to the location where figures can be saved. When one is not given it is taken to be \texttt{\textit{filepath}}.\\
+\ul{CCDReducer} has the following attributes:
+\begin{description}
+\item [Data] The data object holding the image: \texttt{f.Data}
+\item [imshow] A function which creates a figure to view the image. It takes the optional \texttt{\textit{cmap}},  \texttt{\textit{log}} and \texttt{\textit{title}} arguments: \texttt{f.imshow( \textit{cmap}=None, \textit{log}=False, \textit{title}=''Image of Data'')}
+\item [imsave] A function which creates a figure and saves it. It takes the same arguments as imshow as well as: \texttt{\textit{savename}} and \texttt{\textit{extension}}: \texttt{f.imsave(\textit{cmap}=None, \textit{log}=False, \textit{title}=''Image of Data'', \textit{savename}=''CCDPic'', \textit{extension}=''.png'')}
+\end{description}
+
+\subsubsection{CCDLaserReducer}
+The \ul{CCDLaserReducer} is a subclass of \ul{CCDReducer} specifically create to reduce images captured of laser light. Its calling signature is:
+\[\texttt{f = CCDLaserReducer(\textit{filepath}, \textit{masterpath}=None, \textit{savepath}=None, \textit{pixel\_size}=1)}\]
+\texttt{\textit{filepath}}, \texttt{\textit{masterpath}} and \texttt{\textit{savepath}} work as in \ul{CCDReducer}. \texttt{\textit{pixel\_size}} is a float or integer indicating the length of a pixel (pixels are assumed to be square shaped).\\
+\ul{CCDLaserReducer} has the following atributes:
+\begin{description}
+\item [Data] The data object holding the image: \texttt{f.Data}
+\item [imshow] A function which creates a figure to view the image. It takes the optional \texttt{\textit{cmap}},  \texttt{\textit{log}} and \texttt{\textit{title}} arguments: \texttt{f.imshow( \textit{cmap}=None, \textit{log}=False, \textit{title}=''Image of Data'')}
+\item [imsave] A function which creates a figure and saves it. It takes the same arguments as imshow as well as: \texttt{\textit{savename}} and \texttt{\textit{extension}}: \texttt{f.imsave(\textit{cmap}=None, \textit{log}=False, \textit{title}=''Image of Data'', \textit{savename}=''CCDPic'', \textit{extension}=''.png'')}
+\item [slicingshow] A function which creates a figure to view the image: \texttt{f.imshow()}
+\item [slicingsave] A function which creates a figure and saves it: \texttt{f.imsave()}
+\item [powershow] A function which creates a figure to view the image: \texttt{f.imshow()}
+\item [powersave] A function which creates a figure and saves it: \texttt{f.imsave()}
+\item [cum\_power\_fraction\_withing\_area] A function which creates a figure to view the image: \texttt{f.imshow()}
+\item [power\_within\_area] A function which creates a figure and saves it: \texttt{f.imsave()}
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+%\clearpage
+%\begin{thebibliography}{9}
+%\bibitem{abc} Last, F. M. (Year Published) Book (edition). City, State: Publisher.
+%\end{thebibliography}
+\end{document}

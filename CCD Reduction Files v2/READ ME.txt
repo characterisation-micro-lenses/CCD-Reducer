@@ -1,0 +1,7 @@
+Important:
+All python files named CCD.... are so called masterfiles.
+masterfiles cannot be executed by themselves, you need
+to write a subclass (the Fits....) which inherit them.
+By changing the appropriate functions you can extend this
+program to work on whatever filetype you want to.
+All the python files use the Data object!
